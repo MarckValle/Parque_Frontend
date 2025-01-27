@@ -4,30 +4,3 @@ body{
   background-color: #F0F8FF !important;
   font-family: Roboto !important;
 }
-
-.container{
-  display: grid;
-  
-}
-
-.login-title{
-  font-size: 60px;
-  font-weight: bold;
-}
-
-.login-subtitle{
-  font-weight: bold;
-  color: #757575;
-}
-
-.login-form{
-  background-color: white;
-  height: 416px;
-  border-radius: 16px;
-  stroke: #808080;
-  stroke-width: 1px;
-}
-
-.login-icon{
-  width: 103px;
-}

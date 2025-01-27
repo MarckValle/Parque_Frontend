@@ -1,12 +1,15 @@
 import LoginForm from "./Forms/LoginForm";
+import '../../assets/styles/login.css'
+
+
 function Login(){
     return (
         <>
-        <div className="container">
-            <h1 className="login-title text-center mt-3">Login Administrador</h1>
-            <h3 className="login-subtitle text-center mt-3">Inicia Sesión</h3>
+        <div className="container text-center mt-5">
+            <h1 className="login-title">Login Administrador</h1>
+            <h3 className="login-subtitle">Inicia Sesión</h3>
+            <LoginForm></LoginForm>
         </div>
-        <LoginForm></LoginForm>
         </>
     )
 }

@@ -1,0 +1,95 @@
+
+/* Contenedor principal centrado */
+.container {
+    text-align: center;
+  }
+  
+  /* Títulos */
+  .login-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .login-subtitle {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #757575;
+    margin-bottom: 20px;
+  }
+  
+  /* Contenedor del formulario */
+  .login-form-container {
+    background-color: #fff;
+    max-width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 40px 30px;
+  }
+  
+  /* Estilo del icono */
+  .login-icon {
+    width: 80px;
+    margin-bottom: 20px;
+  }
+  
+  /* Campos de entrada */
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: none;
+  }
+  
+  /* Checkbox */
+  .form-check {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  /* Botón de inicio de sesión */
+  .btn-dark {
+    background-color: #333;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    width: 100%;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-dark:hover {
+    background-color: #000;
+  }
+  
+  /* Enlace de recuperar contraseña */
+  .forgot-password-link {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .forgot-password-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 576px) {
+    .login-form-container {
+        width: 90%;
+        padding: 30px;
+    }
+  
+    .login-title {
+        font-size: 2rem;
+    }
+  
+    .login-subtitle {
+        font-size: 1rem;
+    }
+  }
+  
