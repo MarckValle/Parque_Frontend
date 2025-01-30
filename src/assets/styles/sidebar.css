@@ -1,0 +1,111 @@
+.app-container {
+    display: flex; /* Flexbox para alinear el sidebar y el contenido principal */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 14rem;
+    height: 100vh;
+    border-right: 1px solid gray;
+    background-color: #4e733d;
+    color: white;
+    transition: width 0.3s ease;
+    top: 0;
+  }
+  
+  .sidebar.collapsed {
+    width: 4rem;
+  }
+  
+  .sidebar .sidebar-header {
+    font-size: 1.2rem;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .sidebar .sidebar-nav {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar .sidebar-item {
+    margin: 0.5rem 0;
+  }
+  
+  .sidebar .sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .sidebar .sidebar-link.active {
+    background-color: #A8C686;
+    border-radius: 5px;
+  }
+  
+  .sidebar .sidebar-link:hover {
+    background-color: #A8C686;
+    text-decoration: none;
+  }
+  
+  .sidebar .toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+  
+  .sidebar .sidebar-dropdown {
+    padding-left: 1rem;
+  }
+  
+  .sidebar.collapsed .sidebar-header,
+  .sidebar.collapsed .sidebar-link span {
+    display: none;
+  }
+  
+  .sidebar-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem; /* Tamaño ajustable para que encaje en el diseño */
+    border-top: 1px solid #3a552e; /* Línea divisoria con el resto del sidebar */
+    background-color: #4e733d; /* Mismo color que el sidebar */
+    color: white;
+  }
+  
+  .sidebar-footer a {
+    color: white; /* Color del ícono */
+    text-decoration: none; /* Sin subrayado */
+    font-size: 1.5rem; /* Tamaño del ícono */
+    transition: color 0.2s ease;
+  }
+  
+  .sidebar-footer a:hover {
+    color: #c2f0c2; /* Cambiar color al pasar el mouse */
+  }
+  
+  .main-content {
+    display: flex;
+    flex-direction: column; /* Navbar arriba y contenido abajo */
+    flex-grow: 1; /* Ocupar todo el espacio disponible */
+    overflow: auto; /* Permitir scroll en el contenido si es necesario */
+  }
+  
+  /* Navbar */
+  .navbar {
+    height: 64px; /* Ajusta la altura del navbar */
+    border-bottom: 1px solid #ddd;
+    z-index: 10; /* Asegúrate de que esté sobre el contenido */
+  }
+  
+  /* Contenido principal */
+  .content {
+    background-color: #f8f9fa;
+  }

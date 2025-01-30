@@ -1,4 +1,6 @@
-import key from '../../../assets/svgs/key.svg'
+import key from '/src/assets/svgs/key.svg'
+import InputField from '/src/Components/Inputs/inputfield';
+import FormButton from '/src/Components/Buttons/FormButton';
 
 function ForgotForm(){
     return (
@@ -11,9 +13,9 @@ function ForgotForm(){
             </div>
             <form action="">
                 <div className="form-group">
-                    <input type="text" placeholder='Correo electronico' className='form-control mt-4' required/>
+                    <InputField type="text" placeholder='Correo electronico' className='form-control mt-4' required/>
                 </div>
-                <button className='btn btn-dark btn-block mt-4'>Enviar</button>
+                <FormButton className='btn btn-dark btn-block mt-4' label="Enviar"></FormButton>
             </form>
             <div className="text-center mt-4">
                 <a href="/login_administrador">Volver al login</a> 

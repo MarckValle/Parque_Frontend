@@ -1,4 +1,4 @@
-import ForgotForm from './Forms/ForgotForm'
+import ForgotForm from '/src/Components/Dashboard/Forms/ForgotPasswordForm/ForgotForm'
 
 function ForgotPassword(){
     return(
