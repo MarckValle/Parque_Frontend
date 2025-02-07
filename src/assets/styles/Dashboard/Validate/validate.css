@@ -1,0 +1,61 @@
+.validate-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 columnas responsivas */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+    background-color: #F0F8FF;
+}
+
+
+.validate-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+
+
+.badge-validate{
+    background-color: #A8C686;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+
+.card-validate {
+    flex: 1;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 18px;
+    text-align: center;
+  }
+
+.btn-success{
+    background-color: #A8C686 !important;
+    border-color: #A8C686 !important;
+    border-radius: 16px !important;
+}
+
+.btn-success:hover{
+    background-color: #8e9e7b !important;
+    border-color: #8e9e7b !important;
+}
+
+.btn-danger{
+    background-color: #C74141 !important;
+    border-color: #C74141 !important;
+    border-radius: 16px !important;
+}
+
+.btn-danger:hover{
+    background-color: #a37a7a !important;
+    border-color: #a37a7a !important;
+}

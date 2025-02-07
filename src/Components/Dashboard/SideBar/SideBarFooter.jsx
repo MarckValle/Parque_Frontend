@@ -1,12 +1,17 @@
-import React from "react";
-import '/src/assets/styles/sidebar.css'
-function SideBarFooter(){
+import React, {useState} from "react";
+
+function SideBarFooter(  ){
+
+    const [isCollapsed, setIsCollapsed] = useState(true);
+    
+    
+
     return (
         <div className="sidebar-footer">
-            <a href="">
-                <i class="bi bi-box-arrow-left"></i>
-                <span className="ms-2">Salir</span>
-            </a>
+            <a className={`sidebar-item ${!isCollapsed ? "expanded" : ""}`}  href="#">
+            <i className="bi bi-box-arrow-left"></i>
+            {!isCollapsed && <span className="ms-2">Salir</span>}
+            </a>  
         </div>
     );
 };

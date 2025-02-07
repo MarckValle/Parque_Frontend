@@ -5,7 +5,7 @@ function NavBar({ name }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/dashboard">
           {name}
         </a>
         <button

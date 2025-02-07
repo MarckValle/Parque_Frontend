@@ -1,21 +1,24 @@
 import React from "react";
 import SideBar from "../../../Components/Dashboard/SideBar/SideBar";
 import NavBar from "../../../Components/Dashboard/Navbar/Navbar";
-import Summary from "../../../Components/Dashboard/Summary/Summary";
+import HabitatTable from "../../../Components/Dashboard/Table/HabitatTable/HabitatTable";
+import HabitatForm from "../../../Components/Dashboard/Forms/HabitatForm/HabitatForm";
+
 import '/src/assets/styles/Dashboard/Dashboard.css'
 
-function DashboardPage(){
+function HabitatsPage(){
     return (
         <div className="app-container d-flex">
                 <SideBar />
             <div className="main-content flex-grow-1">
-                <NavBar name='Dashboard' />
+                <NavBar name='Habitats' />
             <main>
-                <Summary/>
+            <HabitatTable/>
+            <HabitatForm/>
             </main>
             </div>
         </div>
     );
 };
 
-export default DashboardPage;
+export default HabitatsPage;
