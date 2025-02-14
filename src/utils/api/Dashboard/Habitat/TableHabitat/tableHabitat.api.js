@@ -8,7 +8,6 @@ const getAuthToken = () => {
 const token = getAuthToken();
 
 export const getTableHabitat = async (url, pageSize) => {
-    const token = localStorage.getItem('access_token');
     try {
         const response = await axios.post(url, {
             page_size: pageSize, // Tamaño de la página

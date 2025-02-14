@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getTableStatus } from "../../../../utils/api/Dashboard/Status/TableStatus/tableStatus.api";
 import Paginator from "../../Pagination/Paginator";
-import { deleteStatus } from "../../../../utils/api/Dashboard/Status/status.api";
-import Swal from "sweetalert2";
+import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
+import EditButton from "./Buttons/EditButton/EditButton";
 
 function StatusTable({ refreshKey }) {
     const [status_, setStatus] = useState([]);
@@ -44,32 +44,6 @@ function StatusTable({ refreshKey }) {
         return <h3 className="text-center mt-4">{error}</h3>;
     }
 
-    const handleDelete = async (id, statusName) => {
-        try {
-            const accepted = await Swal.fire({
-                title: `¿Estás seguro que deseas eliminar "${statusName}"?`,
-                showDenyButton: true,
-                confirmButtonText: "Eliminar",
-                denyButtonText: "Cancelar",
-            });
-
-            if (accepted.isConfirmed) {
-                await deleteStatus(id); // Llamada a la API para eliminar
-                Swal.fire({
-                    icon: "success",
-                    title: "Eliminado",
-                    text: "El registro ha sido eliminado correctamente",
-                });
-                handleRefresh(); // Refrescar los datos de la tabla
-            }
-        } catch (err) {
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: `No se pudo eliminar el registro: ${err.message}`,
-            });
-        }
-    };
 
 
     
@@ -94,15 +68,10 @@ function StatusTable({ refreshKey }) {
                                     <th scope="row">{statu.id}</th>
                                     <td>{statu.status}</td>
                                     <td>
-                                        <button className="btn btn-warning">Editar</button>
+                                        <EditButton onUpdate={handleRefresh} status={statu} />
                                     </td>
                                     <td>
-                                        <button
-                                            onClick={() => handleDelete(statu.id, statu.status)} // Llama al manejo de eliminación
-                                            className="btn btn-outline-danger"
-                                        >
-                                            Eliminar
-                                        </button>
+                                        <DeleteButton onDelete={handleRefresh} status={statu} />
                                     </td>
                                 </tr>
                             ))}

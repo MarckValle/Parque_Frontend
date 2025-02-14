@@ -1,9 +1,16 @@
 import './App.css/';
 import  AppRoutes  from './routes/index';
+import PlataformRoutes from './routes/Plataform/PlataformIndex';
+
 
 function App() {
 
-  return <AppRoutes></AppRoutes>;
+  return (
+  <>
+    <AppRoutes></AppRoutes>
+    <PlataformRoutes />    
+  </>
+  );
   
 }
 

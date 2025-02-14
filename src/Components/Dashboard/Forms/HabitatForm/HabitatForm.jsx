@@ -1,18 +1,34 @@
 import React from "react";
 import { createHabitat } from "../../../../utils/api/Dashboard/Habitat/habitat.api";
 import { useForm } from 'react-hook-form';
-import { useNavigate } from "react-router-dom";
 import "/src/assets/styles/Dashboard/Forms/Forms.css"
+import Swal from 'sweetalert2'
 
-function HabitatForm(){
+function HabitatForm({ onAdd }){
     
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
-    const navigate = useNavigate();
 
     const onSubmit = handleSubmit(async (data) => {
         await createHabitat(data);
         reset();
-        navigate('/habitats/');
+
+        const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Se ha agregado correctamente"
+                });
+        
+        onAdd();
     });
 
     return(

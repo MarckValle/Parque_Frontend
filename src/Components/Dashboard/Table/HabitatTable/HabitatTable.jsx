@@ -1,17 +1,18 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getTableHabitat } from "../../../../utils/api/Dashboard/Habitat/TableHabitat/tableHabitat.api";
 import Paginator from "../../Pagination/Paginator";
+import EditButton from "./Buttons/EditButton/EditButton";
+import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
 
-function HabitatTable(){
+function HabitatTable({ refreshKey }){
 
         const [habitats, setHabitat] = useState([]);
         const [error, setError] = useState(null);
         const [nextPage, setNextPage] = useState(null);
         const [prevPage, setPrevPage] = useState(null);
-        const [currentPage, setCurrentPage] = useState(1); // Página actual
-        const [totalPages, setTotalPages] = useState(1); // Total de páginas
-        const pageSize = 5; // Tamaño de la página
+        const [currentPage, setCurrentPage] = useState(1); 
+        const [totalPages, setTotalPages] = useState(1); 
+        const pageSize = 5; 
         const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_habitats/";
     
         const fetchHabitats = async (url) => {
@@ -27,16 +28,21 @@ function HabitatTable(){
             }
         };
     
-        useEffect(() => {
-            // Cargar la primera página
-            fetchHabitats(`${baseUrl}`);
-        }, []);
-    
+        const handleRefresh = () => {
+                fetchHabitats(`${baseUrl}`);
+            };
+            
+            useEffect(() => {
+                fetchHabitats(`${baseUrl}`);
+            }, [refreshKey]); // Se refresca cuando cambia refreshKey
+        
         const handlePageChange = (url) => {
-            if (url) {
-                fetchHabitats(url); // Navegar a la página siguiente o anterior
-            }
-        };
+                if (url) {
+                    fetchHabitats(url);
+                }
+            };
+
+        
     
         if (error) {
             return <div>{error}</div>;
@@ -45,7 +51,7 @@ function HabitatTable(){
     return(
         <div className="table-container mt-4">
             {habitats.length === 0  ? (
-                <p>No hay elementos en la tabla</p>
+                <h3 className="text-center">No se puedieron cargar los datos</h3>
             ) : (
             <>
                 <table className="table">
@@ -75,10 +81,10 @@ function HabitatTable(){
                                     />
                                 </td>
                                 <td>
-                                    <button className="btn btn-warning">Editar</button>
+                                    <EditButton onUpdate={handleRefresh} habitat={habitat}  />
                                 </td>
                                 <td>
-                                    <button className="btn btn-danger">Eliminar</button>
+                                    <DeleteButton  onDelete={handleRefresh} habitat={habitat} />
                                 </td>
                             </tr>
                         ))}

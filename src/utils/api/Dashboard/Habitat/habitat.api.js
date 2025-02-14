@@ -20,9 +20,6 @@ export const getAllHabitats = async () => {
         throw error; // Volver a lanzar el error para manejarlo en el componente
     }
 };
-export const getIdTasks = ( id ) => {
-   return axios.get(`http://localhost:8000/tasks_app/get_id_tasks/${id}`, { data: {id} });
-};
 
 export const createHabitat = ( habitat ) => {
     return axios.post('http://localhost:8000/admin_netzahualcoyotl/habitat/', habitat,
@@ -33,15 +30,33 @@ export const createHabitat = ( habitat ) => {
     );
 };
 
-export const deleteTask = ( id ) => {
-    return axios.delete(`http://localhost:8000/tasks_app/delete_task/`, { data: {id},  Authorization: `Bearer ${token}` },  );
+export const editHabitat = async (data) => {
+    try {
+        const response = await axios.put(
+            "http://localhost:8000/admin_netzahualcoyotl/habitat/",
+            data, 
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Error en la API:", error.response ? error.response.data : error);
+        throw error.response ? error.response.data : error;
+    }
 };
 
-export const editTask = ( id, data ) =>{
-    return axios.put(`http://localhost:8000/tasks_app/edit_task/${id}`, data ,
-        {headers: {
-            Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
-        },
-    }
-    )
-} 
+
+export const deleteHabitat = ( id ) => {
+    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/habitat/`, 
+    { headers: {
+        Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
+        }, 
+        data: { id }
+    });
+};
+
+

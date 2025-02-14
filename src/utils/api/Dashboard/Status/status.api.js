@@ -49,8 +49,8 @@ export const deleteStatus = ( id ) => {
     });
 };
 
-export const editStatus = ( id, data ) =>{
-    return axios.put(`http://localhost:8000/tasks_app/status/${id}`, data ,
+export const editStatus = ( data ) =>{
+    return axios.put(`http://localhost:8000/admin_netzahualcoyotl/status/`, data ,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         },

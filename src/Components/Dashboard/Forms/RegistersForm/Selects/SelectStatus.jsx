@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const StatusSelect = ( {onChange} ) => {
     const [statuses, setStatuses] = useState([]); // Guardar opciones del API
-    const [selectedStatus, setSelectedStatus] = useState(''); // Valor seleccionado
 
     useEffect(() => {
         // Petición a la API

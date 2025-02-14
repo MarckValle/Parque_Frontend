@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getTable } from "../../../../utils/api/Dashboard/Registers/registersTable.api";
 import Paginator from "../../Pagination/Paginator";
-import Icons from "./Icons/Icons";
-import imgae from '/src/assets/svgs/Registers/image.svg'
-import video from '/src/assets/svgs/Registers/video.svg'
-import sound from '/src/assets/svgs/Registers/sound.svg'
-import EditButton from "./Buttons/EditButton/EditButton";
 import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
 
-function RegistersTable({ refreshKey }){
+function UsersTable({ refreshKey }){
 
         const [registers, setRegisters] = useState([]);
         const [error, setError] = useState(null);
@@ -17,7 +12,7 @@ function RegistersTable({ refreshKey }){
         const [currentPage, setCurrentPage] = useState(1); // Página actual
         const [totalPages, setTotalPages] = useState(1); // Total de páginas
         const pageSize = 5; // Tamaño de la página
-        const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/get_registers/";
+        const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_users/";
     
         const fetchRegisters = async (url) => {
             try {
@@ -45,6 +40,8 @@ function RegistersTable({ refreshKey }){
                             fetchRegisters(url);
                         }
                     };
+
+        
     
         if (error) {
             return <div>{error}</div>;
@@ -61,15 +58,11 @@ function RegistersTable({ refreshKey }){
                         <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Nombre cientifico</th>
-                        <th scope="col">Funcion</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Distribucion</th>
-                        <th scope="col">Sonido</th>
-                        <th scope="col">Fotografia</th>
-                        <th scope="col">Video</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Estatus</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Tipo Usuario</th>
                         <th scope="col">Editar</th>
                         <th scope="col">Eliminar</th>
                         </tr>
@@ -78,27 +71,17 @@ function RegistersTable({ refreshKey }){
                         {registers.map((register) => (
                             <tr key={register.id}>
                                 <th scope="row">{register.id}</th>
-                                <td>{register.name}</td>
-                                <td>{register.scientific_name}</td>
-                                <td>{register.function}</td>
-                                <td>{register.description}</td>
-                                <td>{register.distribution}</td>
+                                <td>{register.first_name}</td>
+                                <td>{register.last_name}</td>
+                                <td>{register.age}</td>
+                                <td>{register.email}</td>
+                                <td>{register.phone}</td>
+                                <td>{register.type_id?.type_user}</td>
                                 <td>
-                                    <Icons data={register.has_sound} img={sound} />
+                                    <button className="btn btn-warning">Editar</button>
                                 </td>
                                 <td>
-                                    <Icons data={register.has_photo} img={imgae} />
-                                </td>
-                                <td>
-                                    <Icons data={register.has_video} img={video} />
-                                </td>
-                                <td>{register.type_id?.type_register}</td>
-                                <td>{register.status_id?.status}</td>
-                                <td>
-                                    <EditButton onUpdate={handleRefresh} register={register} />
-                                </td>
-                                <td>
-                                    <DeleteButton onDelete={handleRefresh} register={register} />
+                                    <DeleteButton onDelete={handleRefresh} users={register} />
                                 </td>
                             </tr>
                         ))}
@@ -117,4 +100,4 @@ function RegistersTable({ refreshKey }){
     );
 }
 
-export default RegistersTable;
+export default UsersTable;
