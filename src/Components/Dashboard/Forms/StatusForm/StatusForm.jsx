@@ -34,7 +34,7 @@ function StatusForm({ onAdd }) {
     return (
         <div className="form-container">
             <h3 className="text-center">Registra nuevos estatus</h3>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="small-form">
                 <div className="form-group">
                     <input
                         className="form-control"

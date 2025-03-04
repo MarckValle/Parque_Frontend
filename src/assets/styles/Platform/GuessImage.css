@@ -1,0 +1,107 @@
+.container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    transition: filter 1s ease-in-out;
+}
+
+.image-blurred {
+    filter: blur(10px);
+}
+
+.image-revealed {
+    filter: blur(0);
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.option-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.option-label:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.result-message {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.correct {
+    color: green;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.incorrect {
+    color: red;
+    opacity: 1;
+    transform: scale(1.1);
+}

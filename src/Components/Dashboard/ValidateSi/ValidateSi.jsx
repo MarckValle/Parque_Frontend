@@ -1,45 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "./Card/Cards";
-import '/src/assets/styles/Dashboard/Validate/validate.css'
+import Swal from "sweetalert2";
+import "/src/assets/styles/Dashboard/Validate/validate.css";
+import { getAllSight, validatedSight } from "../../../utils/api/Dashboard/Sighthings/Validate";
 
-function ValidateSig(){
-    return(
+function ValidateSig() {
+    const [sightings, setSightings] = useState([]); // Estado inicial vacío
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchSightings();
+    }, []);
+
+    const fetchSightings = async () => {
+        setLoading(true);
+        try {
+            const data = await getAllSight(); 
+            setSightings(data || []); // Si `results` es undefined, usa un array vacío
+        } catch (error) {
+            console.error("Error al obtener los avistamientos:", error);
+            setSightings([]); // En caso de error, dejamos el estado vacío
+        }
+        setLoading(false);
+    };
+
+    const handleApprove = async (id) => {
+        try {
+            await validatedSight(id);
+            Swal.fire({
+                icon: "success",
+                title: "Aprobado",
+                text: "El avistamiento ha sido validado con éxito",
+                timer: 2000,
+            });
+
+            // Refrescar la lista después de validar
+            fetchSightings();
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "No se pudo validar el avistamiento",
+            });
+        }
+    };
+
+    return (
         <div className="validate-container">
-                <Cards
-                    id="1"
-                    tipo="Mamífero"
-                    nombre="Juan Pérez"
-                    fecha="28/01/2025"
-                    descripcion="Avistamiento de un zorro gris en el sendero ecológico."
-                    img='https://images.pexels.com/photos/47547/squirrel-animal-cute-rodents-47547.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-                />
-                <Cards
-                    id="2"
-                    tipo="Aves"
-                    nombre="Ana López"
-                    fecha="29/01/2025"
-                    descripcion="Avistamiento de un halcón peregrino sobrevolando el área."
-                    img='https://images.pexels.com/photos/28293914/pexels-photo-28293914/free-photo-of-ardilla-curiosa.jpeg'
-                />
-                <Cards
-                    id="3"
-                    tipo="Reptil"
-                    nombre="Carlos Martínez"
-                    fecha="30/01/2025"
-                    descripcion="Avistamiento de una serpiente cascabel en el sendero."
-                    img='https://images.pexels.com/photos/1314550/pexels-photo-1314550.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-                />
-                <Cards
-                    id="4"
-                    tipo="Insecto"
-                    nombre="María González"
-                    fecha="31/01/2025"
-                    descripcion="Avistamiento de una mariposa monarca en la zona norte."
-                    img='https://images.pexels.com/photos/127028/pexels-photo-127028.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
-                />
 
+            {loading ? (
+                <p className="text-center">Cargando avistamientos...</p>
+            ) : sightings.length === 0 ? (
+                <p className="text-center">No hay avistamientos por validar.</p>
+            ) : (
+                sightings.map((sight) => (
+                    <Cards
+                        key={sight.id}
+                        id={sight.id}
+                        tipo={sight.type_register}
+                        nombre={sight.full_name}
+                        fecha={sight.date}
+                        descripcion={sight.description}
+                        img={sight.photo}
+                        onApprove={() => handleApprove(sight.id)}
+                    />
+                ))
+            )}
         </div>
-    )
+    );
 }
 
 export default ValidateSig;

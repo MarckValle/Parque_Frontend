@@ -1,15 +1,14 @@
 import './App.css/';
 import  AppRoutes  from './routes/index';
-import PlataformRoutes from './routes/Plataform/PlataformIndex';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 function App() {
 
   return (
-  <>
-    <AppRoutes></AppRoutes>
-    <PlataformRoutes />    
-  </>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
   
 }

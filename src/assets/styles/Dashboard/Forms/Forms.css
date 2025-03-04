@@ -47,3 +47,21 @@ button {
 button:hover {
     background-color: #007a63; /* Oscurecer verde al pasar el cursor */
 }
+
+.small-form {
+    max-width: 800px; /* Ajusta el ancho del formulario */
+    margin: auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Pone el label arriba del input */
+    margin-bottom: 10px;
+}
+
+.small-input {
+    height: 35px; /* Reduce la altura de los inputs */
+    font-size: 14px; /* Reduce el tamaño del texto */
+    padding: 5px;
+}
+

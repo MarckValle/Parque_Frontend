@@ -33,21 +33,22 @@ function HabitatForm({ onAdd }){
 
     return(
         <div className="form-container">
-            <h3 className="text-center">Registra una nueva Habitat</h3>
-            <form onSubmit={onSubmit}>
+            <h3 className="text-center">Registra una nueva Hábitat</h3>
+            <form onSubmit={onSubmit} className="small-form">
                 <div className="form-group">
-                    <label htmlFor="name" className="form-label">Habitat</label>
-                    <input className="form-control" id="name" type="text" placeholder="Escribe el Habitat" autoComplete="off"  {...register("name", { required: true })} />
-                    {errors.name && <span className="text-danger">This field is required</span>}
+                    <label htmlFor="name" className="form-label">Hábitat</label>
+                    <input className="form-control small-input" id="name" type="text" placeholder="Escribe el hábitat" autoComplete="off" {...register("name", { required: true })} />
+                    {errors.name && <span className="text-danger">Este campo es obligatorio</span>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="photo" className="form-label">Selecciona una fotografia</label>
-                    <input className="form-control" id="photo" type="text" placeholder="Fotografia" autoComplete="off"  {...register("photo", { required: true })} />
-                    {errors.photo && <span className="text-danger">This field is required</span>}
+                    <label htmlFor="photo" className="form-label">Selecciona una fotografía</label>
+                    <input className="form-control small-input" id="photo" type="file" placeholder="Fotografía" autoComplete="off" {...register("photo", { required: true })} />
+                    {errors.photo && <span className="text-danger">Este campo es obligatorio</span>}
                 </div>
                 <button type="submit" className="btn btn-dark btn-block mt-3">Guardar</button>
             </form>
         </div>
+
     )
 };
 
