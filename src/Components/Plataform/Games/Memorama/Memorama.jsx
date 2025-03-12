@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "/src/assets/styles/Platform/MemoryGame.css";
-
+import { ClipLoader } from "react-spinners";
 const MemoryGame = () => {
     const [cards, setCards] = useState([]);
     const [flippedCards, setFlippedCards] = useState([]);
@@ -75,7 +75,14 @@ const MemoryGame = () => {
         }
     };
 
-    if (loading) return <div className="text-center">Cargando...</div>;
+    if (loading) {
+        return (
+            <div className="container">
+                <ClipLoader color="#007bff" size={100} />
+                <p>Cargando información...</p>
+            </div>
+        );
+    }
 
     return (
 

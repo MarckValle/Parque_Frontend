@@ -5,18 +5,22 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import InfoView from "../Info/Info";
 const API_URL = "http://localhost:8000/admin_netzahualcoyotl/add_register/";
+import { ClipLoader } from "react-spinners";
 
 const Registers = () => {
 
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get(API_URL)
       .then((response) => {
         if (response.data) {
           setData(response.data);
+          setLoading(false);
+
         }
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -54,6 +58,15 @@ const Registers = () => {
       }
     });
   };
+
+  if (loading) {
+    return (
+        <div className="container">
+            <ClipLoader color="#007bff" size={100} />
+            <p>Cargando información...</p>
+        </div>
+    );
+}
 
 
   return (

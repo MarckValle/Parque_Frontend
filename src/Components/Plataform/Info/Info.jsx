@@ -7,6 +7,8 @@ import FunctionSection from "./Function/FunctionSection";
 import ConservationSection from "./Conservation/ConservationSection";
 import { useParams } from "react-router-dom";
 import Model3D from "./Model3D/Model3D";
+import { ClipLoader } from "react-spinners";
+
 
 function InfoView() {
     const { registerId } = useParams();
@@ -43,7 +45,14 @@ function InfoView() {
         fetchData();
     }, [registerId]);
 
-    if (loading) return <p>Cargando...</p>;
+    if (loading) {
+        return (
+            <div className="container">
+                <ClipLoader color="#007bff" size={100} />
+                <p>Cargando información...</p>
+            </div>
+        );
+    }
     if (error) return <p>Error: {error}</p>;
     if (!registerData) return <p>No se encontraron datos.</p>;
 

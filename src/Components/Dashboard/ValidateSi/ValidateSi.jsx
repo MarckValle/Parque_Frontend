@@ -3,6 +3,7 @@ import Cards from "./Card/Cards";
 import Swal from "sweetalert2";
 import "/src/assets/styles/Dashboard/Validate/validate.css";
 import { getAllSight, validatedSight } from "../../../utils/api/Dashboard/Sighthings/Validate";
+import { ClipLoader } from "react-spinners";
 
 function ValidateSig() {
     const [sightings, setSightings] = useState([]); // Estado inicial vacío
@@ -49,7 +50,12 @@ function ValidateSig() {
         <div className="validate-container">
 
             {loading ? (
-                <p className="text-center">Cargando avistamientos...</p>
+                 
+                            <div className="container">
+                                <ClipLoader color="#007bff" size={100} />
+                                <p>Cargando información...</p>
+                            </div>
+                        
             ) : sightings.length === 0 ? (
                 <p className="text-center">No hay avistamientos por validar.</p>
             ) : (
