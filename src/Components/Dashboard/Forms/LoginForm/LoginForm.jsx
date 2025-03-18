@@ -1,4 +1,4 @@
-import InputField from "/src/Components/Inputs/inputfield";
+import InputField from "/src/Components/Inputs/Inputfield.jsx";
 import loginicon from "/src/assets/user-icon.svg";
 import FormButton from "/src/Components/Buttons/FormButton";
 
