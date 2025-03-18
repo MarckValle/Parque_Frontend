@@ -1,6 +1,6 @@
 import key from '/src/assets/svgs/key.svg'
-import InputField from '/src/Components/Inputs/Inputfield.jsx';
 import FormButton from '/src/Components/Buttons/FormButton';
+import InputField from '../../../Inputs/InputField.jsx'
 
 function ForgotForm(){
     return (
