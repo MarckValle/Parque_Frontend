@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../../../Components/Plataform/NavBar/NavBar";
 import Footer from "../../../Components/Plataform/Footer/Footer";
-import ShareViews from "../../../Components/Plataform/Forms/ShareViews/ShareViews.Jsx";
+import ShareViews from "../../../Components/Plataform/Forms/ShareViews/ShareViews.jsx";
 
 function IndexPage(){
     return (
