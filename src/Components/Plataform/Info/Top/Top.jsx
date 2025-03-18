@@ -7,7 +7,7 @@ function Top({ photo, name, scientific_name }){
     
     return (
         <div
-            className="top-section text-center text-white"
+            className="app-top-section text-center text-white"
             style={{
                 backgroundImage: `url(${photo})`,
                 backgroundSize: "cover",

@@ -1,8 +1,9 @@
 import React from "react";
 import '/src/assets/styles/Platform/index.css';
+
 function Footer(){
     return(
-        <footer className="text-dark py-4 mt-auto border-top">
+        <footer className=" app-footer text-dark py-4 mt-auto border-top">
             <div className="container">
                 
                 <div className="row text-center">

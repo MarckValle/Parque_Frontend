@@ -3,6 +3,7 @@ import { getTableHabitat } from "../../../../utils/api/Dashboard/Habitat/TableHa
 import Paginator from "../../Pagination/Paginator";
 import EditButton from "./Buttons/EditButton/EditButton";
 import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
+import { ClipLoader } from "react-spinners";
 
 function HabitatTable({ refreshKey }){
 
@@ -12,12 +13,15 @@ function HabitatTable({ refreshKey }){
         const [prevPage, setPrevPage] = useState(null);
         const [currentPage, setCurrentPage] = useState(1); 
         const [totalPages, setTotalPages] = useState(1); 
+        const [loading, setLoading] = useState(true);
+
         const pageSize = 5; 
         const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_habitats/";
     
         const fetchHabitats = async (url) => {
             try {
                 const data = await getTableHabitat(url, pageSize);
+                setLoading(false);
                 setHabitat(data.results);
                 setNextPage(data.next);
                 setPrevPage(data.previous);
@@ -48,9 +52,18 @@ function HabitatTable({ refreshKey }){
             return <div>{error}</div>;
         }
 
+        
+
     return(
         <div className="table-container mt-4">
-            {habitats.length === 0  ? (
+            {loading ? (
+                             
+                                        <div className="container">
+                                            <ClipLoader color="#007bff" size={100} />
+                                            <p>Cargando información...</p>
+                                        </div>
+                                    
+            ) : habitats.length === 0  ? (
                 <h3 className="text-center">No se puedieron cargar los datos</h3>
             ) : (
             <>

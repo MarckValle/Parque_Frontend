@@ -7,7 +7,7 @@ import video from '/src/assets/svgs/Registers/video.svg'
 import sound from '/src/assets/svgs/Registers/sound.svg'
 import EditButton from "./Buttons/EditButton/EditButton";
 import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
-
+import { ClipLoader } from "react-spinners";
 function RegistersTable({ refreshKey }){
 
         const [registers, setRegisters] = useState([]);
@@ -18,7 +18,7 @@ function RegistersTable({ refreshKey }){
         const [totalPages, setTotalPages] = useState(1); // Total de páginas
         const pageSize = 5; // Tamaño de la página
         const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/get_registers/";
-    
+        const [loading, setLoading] = useState(true);
         const fetchRegisters = async (url) => {
             try {
                 const data = await getTable(url, pageSize);
@@ -27,6 +27,7 @@ function RegistersTable({ refreshKey }){
                 setPrevPage(data.previous);
                 setTotalPages(data.total_pages);
                 setCurrentPage(data.current_page);
+                setLoading(false);
             } catch (err) {
                 setError("No se pudieron cargar los estatus");
             }
@@ -52,7 +53,14 @@ function RegistersTable({ refreshKey }){
 
     return(
         <div className="table-container mt-4">
-            {registers.length === 0  ? (
+              {loading ? (
+                             
+                             <div className="container">
+                                 <ClipLoader color="#007bff" size={100} />
+                                 <p>Cargando información...</p>
+                             </div>
+                         
+        ) :    registers.length === 0  ? (
                 <p>No hay elementos en la tabla</p>
             ) : (
             <>

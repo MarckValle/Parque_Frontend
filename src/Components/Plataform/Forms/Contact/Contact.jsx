@@ -34,7 +34,7 @@ function ContactForm() {
 
   return (
       <form onSubmit={onSubmit}>
-        <div className="share-container d-flex justify-content-center">
+        <div className="app-share-container d-flex justify-content-center">
           {/* Sección Izquierda - Inputs */}
             <div className="share-left">
               <h2>Contactanos</h2>
@@ -61,7 +61,7 @@ function ContactForm() {
                       
                   </textarea>
               </div>
-              <button className="btn btn-success text-dark mt-3">Enviar</button>
+              <button className="btn btn-success text-dark mt-3 col-12">Enviar</button>
             </div>         
         </div>
       </form>

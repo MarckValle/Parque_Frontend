@@ -3,7 +3,6 @@ import NavBar from "../../../Components/Plataform/NavBar/NavBar";
 import Footer from "../../../Components/Plataform/Footer/Footer";
 import ImageCarousel from "../../../Components/Plataform/ImageCarrousel/ImageCarrousel";
 
-
 function IndexPage(){
     return (
         <div className="app-container d-flex">

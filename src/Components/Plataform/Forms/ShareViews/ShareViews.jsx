@@ -63,9 +63,9 @@ function ImageUploadForm() {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="share-container">
+      <div className="app-share-container">
         {/* Sección Izquierda - Inputs */}
-          <div className="share-left">
+          <div className="app-share-left">
             <h2>Comparte tus fotografías</h2>
             <p>Envía tus avistamientos dentro del parque</p>
 
@@ -89,7 +89,7 @@ function ImageUploadForm() {
 
           {/* Sección Derecha - Imagen */}
           <div className="share-right">
-            <div className="image-preview">
+            <div className="app-image-preview">
               {imagePreview ? (
                 <img src={imagePreview} alt="Vista previa" />
               ) : (
@@ -106,7 +106,7 @@ function ImageUploadForm() {
                 <label htmlFor="description" className="form-label">Descripción</label>
                 <input type="text" placeholder="Descripción" id="description" className="form-control" {...register("description", { required: true })}/>    
             </div>        
-            <button className="btn btn-success text-dark">Enviar</button>
+            <button className="btn btn-success text-dark mt-5">Enviar</button>
           </div>
         
       </div>

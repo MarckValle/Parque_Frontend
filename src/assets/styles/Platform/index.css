@@ -1,91 +1,35 @@
-footer {
-    background-color: #F0F8FF !important;
-    color: #000;
-    padding: 20px 0;
-  }
+/* Estilos globales con mayor especificidad usando clases específicas */
+/* FOOTER */
+.app-footer {
+  background-color: #F0F8FF !important;
+  color: #000;
+  padding: 20px 0;
+}
   
-  footer a {
-    color: #000;
-    text-decoration: none;
-  }
+.app-footer a {
+  color: #000;
+  text-decoration: none;
+}
   
-  footer a:hover {
-    text-decoration: underline;
-  }
+.app-footer a:hover {
+  text-decoration: underline;
+}
   
-  footer .bi {
-    font-size: 1.5rem;
-  }
-/* Contenedor principal del carrusel */
-.carousel-container {
-  width: 100%; /* Ancho completo de la pantalla */
-  height: 100%; /* Ajusta la altura para evitar que tape el footer */
-  overflow: hidden;
+.app-footer .bi {
+  font-size: 1.5rem;
 }
 
-/* Asegura que cada slide tenga un tamaño definido */
-.slide-content {
-  position: relative;
+.us-container{
+  background-image: url('https://images.saymedia-content.com/.image/t_share/MTc2MTA3NDM4NzMzMjcyOTY3/top-10-most-beautiful-animals-in-the-world.jpg');
   width: 100%;
-  height: 100%;
-  
-}
-
-/* Imágenes dentro del carrusel */
-.slide-content img {
-  width: 100%;
+  height: 100vh;
+  object-fit: cover;
   opacity: 0.8;
-  height: 100%;
-  object-fit: cover; /* Mantiene la proporción sin desharearse */
 }
 
-/* Texto superpuesto en el carrusel */
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-}
-
-/* Botón del carrusel */
-.carousel-button {
-  background: #4caf50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.carousel-button:hover {
-  background: #45a049;
-}
-
-/* Ajuste de los botones de navegación */
-.swiper-button-prev,
-.swiper-button-next {
-  color: white !important;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-}
-
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 20px !important;
-}
-
+/* SHARE */
 /* Contenedor principal */
-.share-container {
+.app-share-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -99,6 +43,58 @@ footer {
 }
 
 /* Sección izquierda - Inputs */
+.app-share-left {
+  width: 45%;
+}
+
+.app-share-left h2 {
+  margin-bottom: 10px;
+}
+
+.app-share-left input,
+.app-share-left select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Sección derecha - Imagen */
+.app-share-right {
+  width: 50%;
+  text-align: center;
+}
+
+.app-image-preview {
+  width: 200px;
+  height: 200px;
+  margin: 10px auto;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.app-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-placeholder {
+  font-size: 20px;
+  color: #888;
+}
+
+/* Botón de carga */
+.app-share-left input[type="file"],
+.app-share-right input[type="file"] {
+  margin: 10px 0;
+}
+
 .share-left {
   width: 45%;
 }
@@ -122,43 +118,17 @@ footer {
   text-align: center;
 }
 
-.image-preview {
-  width: 200px;
-  height: 200px;
-  margin: 10px auto;
-  border: 2px dashed #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.image-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.placeholder {
-  font-size: 20px;
-  color: #888;
-}
-
-/* Botón de carga */
-input[type="file"] {
-  margin: 10px 0;
-}
-
-.us-container{
+/* US SECTION */
+.app-us-container {
   background-image: url('https://images.saymedia-content.com/.image/t_share/MTc2MTA3NDM4NzMzMjcyOTY3/top-10-most-beautiful-animals-in-the-world.jpg');
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
   object-fit: cover;
   opacity: 0.8;
+  position: relative;
 }
 
-.circle-img {
+.app-circle-img {
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -166,11 +136,23 @@ input[type="file"] {
   border: 2px solid #000;
 }
 
-.top-img {
+.app-top-img {
   background-color: rgba(0,0,0,0.6);
-  width: 100vh;
+  width: 100vw;
   height: auto;
   background-size: cover;
-	background-repeat: no-repeat;
-  filter:brightness(0.7);
+  background-repeat: no-repeat;
+  filter: brightness(0.7);
+}
+
+/* validate.css */
+.game-link {
+  text-decoration: none;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.game-link:hover .shadow-sm {
+  background-color: #e0e0d1; /* Cambia el color al pasar el cursor */
+  transition: background-color 0.3s ease;
 }

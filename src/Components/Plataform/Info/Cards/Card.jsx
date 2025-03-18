@@ -1,5 +1,5 @@
 import React from "react";
-
+import "/src/assets/styles/Dashboard/Validate/validate.css";
 
 const Cards = ({ theme, tipo, nombre, fecha, descripcion, img }) => {
   return (

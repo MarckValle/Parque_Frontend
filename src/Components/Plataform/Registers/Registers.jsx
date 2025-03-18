@@ -61,7 +61,7 @@ const Registers = () => {
 
   if (loading) {
     return (
-        <div className="container">
+        <div className="container text-center">
             <ClipLoader color="#007bff" size={100} />
             <p>Cargando información...</p>
         </div>
@@ -81,7 +81,7 @@ const Registers = () => {
                   <img
                     src={item.photo || "https://th.bing.com/th/id/R.58885955fedc0c6407b92725c37bf6ec?rik=7Wuk8u3m0kQJaQ&pid=ImgRaw&r=0"}
                     alt={item.name}
-                    className="circle-img"
+                    className="app-circle-img"
                   />
                 </button>
                 <p>{item.name}</p>

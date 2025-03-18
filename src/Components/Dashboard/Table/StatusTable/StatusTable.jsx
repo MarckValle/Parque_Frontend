@@ -3,6 +3,7 @@ import { getTableStatus } from "../../../../utils/api/Dashboard/Status/TableStat
 import Paginator from "../../Pagination/Paginator";
 import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
 import EditButton from "./Buttons/EditButton/EditButton";
+import { ClipLoader } from "react-spinners";
 
 function StatusTable({ refreshKey }) {
     const [status_, setStatus] = useState([]);
@@ -13,6 +14,7 @@ function StatusTable({ refreshKey }) {
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5;
     const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_status/";
+    const [loading, setLoading] = useState(true);
 
     const fetchStatus = async (url) => {
         try {
@@ -22,6 +24,7 @@ function StatusTable({ refreshKey }) {
             setPrevPage(data.previous);
             setTotalPages(data.total_pages);
             setCurrentPage(data.current_page);
+            setLoading(false);
         } catch (err) {
             setError("No se pudieron cargar los datos");
         }
@@ -49,7 +52,14 @@ function StatusTable({ refreshKey }) {
     
     return (
         <div className="table-container mt-4">
-            {status_.length === 0 ? (
+             {loading ? (
+                                         
+                                         <div className="container">
+                                             <ClipLoader color="#007bff" size={100} />
+                                             <p>Cargando información...</p>
+                                         </div>
+                                     
+            ) :status_.length === 0 ? (
                 <h3 className="text-center">No se puedieron cargar los datos</h3>
             ) : (
                 <>
