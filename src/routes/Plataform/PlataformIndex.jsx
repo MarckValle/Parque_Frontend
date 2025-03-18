@@ -73,6 +73,7 @@ function PlataformRoutes() {
             <Route path='/memorama/' element={<MemoramaPage />} />
             <Route path='/adivina_la_imagen/' element={<GuessImagePage />} />
             <Route path='/rompecabezas/' element={<PuzzlePage />} />
+            <Route path="*" element={<IndexPage/>} />
         </Routes>
     );
 }

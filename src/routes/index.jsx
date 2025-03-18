@@ -50,6 +50,7 @@ function AppRoutes() {
         
         {/* Rutas de plataforma */}
         <Route path="/*" element={<PlataformRoutes />} />
+        
       </Routes>
   );
 }
