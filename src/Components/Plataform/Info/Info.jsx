@@ -71,7 +71,7 @@ function InfoView() {
             <hr />
 
             {/* Modelo 3D */}
-            <Model3D modelPath="http://192.168.100.36:9000/bucket-park/Modelos3D%2FGato%2FDingus%20the%20cat.glb" />
+            <Model3D modelPath="https://192.168.100.36:9000/bucket-park/Modelos3D%2FGato%2FDingus%20the%20cat.glb" />
 
             <hr />
 
