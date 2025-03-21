@@ -55,7 +55,7 @@ function RegistersTable({ refreshKey }){
         <div className="table-container mt-4">
               {loading ? (
                              
-                             <div className="container">
+                             <div className="container text-center">
                                  <ClipLoader color="#007bff" size={100} />
                                  <p>Cargando información...</p>
                              </div>

@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { getTableStatus } from "../../../../utils/api/Dashboard/Status/TableStatus/tableStatus.api";
 import Paginator from "../../Pagination/Paginator";
-import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
+import DeleteButton from '../FeedTable/Buttons/DeleteButton/DeleteButton'
 import EditButton from "./Buttons/EditButton/EditButton";
 import { ClipLoader } from "react-spinners";
+import { getTableFeed } from "../../../../utils/api/Dashboard/Feed/feed.api";
 
-function StatusTable({ refreshKey }) {
-    const [status_, setStatus] = useState([]);
+function FeedTable({ refreshKey }) {
+    const [feeds, setFeeds] = useState([]);
     const [error, setError] = useState(null);
     const [nextPage, setNextPage] = useState(null);
     const [prevPage, setPrevPage] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5;
-    const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_status/";
+    const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_feed/";
     const [loading, setLoading] = useState(true);
 
     const fetchStatus = async (url) => {
         try {
-            const data = await getTableStatus(url, pageSize);
-            setStatus(data.results);
+            const data = await getTableFeed(url, pageSize);
+            setFeeds(data.results);
             setNextPage(data.next);
             setPrevPage(data.previous);
             setTotalPages(data.total_pages);
@@ -59,7 +59,7 @@ function StatusTable({ refreshKey }) {
                                              <p>Cargando información...</p>
                                          </div>
                                      
-            ) :status_.length === 0 ? (
+            ) :feeds.length === 0 ? (
                 <h3 className="text-center">No se puedieron cargar los datos</h3>
             ) : (
                 <>
@@ -67,21 +67,29 @@ function StatusTable({ refreshKey }) {
                         <thead className="bg-success">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Estatus</th>
+                                <th scope="col">Comida</th>
+                                <th scope="col">Fotografia</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {status_.map((statu) => (
-                                <tr key={statu.id}>
-                                    <th scope="row">{statu.id}</th>
-                                    <td>{statu.status}</td>
+                            {feeds.map((feed) => (
+                                <tr key={feed.id}>
+                                    <th scope="row">{feed.id}</th>
+                                    <td>{feed.name}</td>
                                     <td>
-                                        <EditButton onUpdate={handleRefresh} status={statu} />
+                                        <img src={feed.photo}  alt="imagen"
+                                        className="img-thumbnail img-fluid"
+                                        style={{ maxWidth: "100px", objectFit: "contain" }}/>
+                                        
+
                                     </td>
                                     <td>
-                                        <DeleteButton onDelete={handleRefresh} status={statu} />
+                                        <EditButton onUpdate={handleRefresh} feed={feed} />
+                                    </td>
+                                    <td>
+                                        <DeleteButton onDelete={handleRefresh} feed={feed} />
                                     </td>
                                 </tr>
                             ))}
@@ -99,4 +107,4 @@ function StatusTable({ refreshKey }) {
     );
 }
 
-export default StatusTable;
+export default FeedTable;

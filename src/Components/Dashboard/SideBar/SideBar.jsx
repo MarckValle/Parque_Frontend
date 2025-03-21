@@ -77,6 +77,18 @@ function SideBar(){
                         {!isCollapsed && <span className="ms-2">Estatus</span>}
                         </a>
                     </li>
+                    <li className="sidebar-item">
+                        <a href="/amenazas/" className={`sidebar-link ${location.pathname === "/amenazas/" ? "active" : ""}`}>
+                        <i class="bi bi-exclamation-diamond-fill"></i>
+                        {!isCollapsed && <span className="ms-2">Amenazas</span>}
+                        </a>
+                    </li>
+                    <li className="sidebar-item">
+                        <a href="/alimentos/" className={`sidebar-link ${location.pathname === "/alimentos/" ? "active" : ""}`}>
+                        <i class="bi bi-patch-plus-fill"></i>
+                        {!isCollapsed && <span className="ms-2">Alimentos</span>}
+                        </a>
+                    </li>
                     </ul>
                 </li>
                 <li className="sidebar-item">

@@ -34,6 +34,12 @@ const StatusPage = loadable(() => import("../pages/Administrator/Status/StatusPa
 const UsersPage = loadable(() => import("../pages/Administrator/Users/UsersPage"), {
   fallback: <LoadingSpinner />
 });
+const FeedPage = loadable(() => import("../pages/Administrator/Feed/FeedPage"), {
+  fallback: <LoadingSpinner />
+});
+const ThreatsPage = loadable(() => import("../pages/Administrator/Threats/ThreatsPage"), {
+  fallback: <LoadingSpinner />
+});
 
 function AppRoutes() {
   return (
@@ -47,6 +53,8 @@ function AppRoutes() {
         <Route path="/habitats/" element={<HabitatsPage />} />
         <Route path="/estatus/" element={<StatusPage />} />
         <Route path="/agregar_usuarios/" element={<UsersPage />} />
+        <Route path="/amenazas/" element={<ThreatsPage />} />
+        <Route path="/alimentos/" element={<FeedPage />} />
         
         {/* Rutas de plataforma */}
         <Route path="/*" element={<PlataformRoutes />} />

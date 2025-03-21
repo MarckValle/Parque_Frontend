@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { getTableStatus } from "../../../../utils/api/Dashboard/Status/TableStatus/tableStatus.api";
 import Paginator from "../../Pagination/Paginator";
-import DeleteButton from "./Buttons/DeleteButton/DeleteButton";
+import DeleteButton from './Buttons/DeleteButton/DeleteButton'
 import EditButton from "./Buttons/EditButton/EditButton";
 import { ClipLoader } from "react-spinners";
+import { getTableThreat } from "../../../../utils/api/Dashboard/Threat/threat.api";
 
-function StatusTable({ refreshKey }) {
-    const [status_, setStatus] = useState([]);
+function FeedTable({ refreshKey }) {
+    const [threats, setThreats] = useState([]);
     const [error, setError] = useState(null);
     const [nextPage, setNextPage] = useState(null);
     const [prevPage, setPrevPage] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5;
-    const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_status/";
+    const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_threat/";
     const [loading, setLoading] = useState(true);
 
     const fetchStatus = async (url) => {
         try {
-            const data = await getTableStatus(url, pageSize);
-            setStatus(data.results);
+            const data = await getTableThreat(url, pageSize);
+            setThreats(data.results);
             setNextPage(data.next);
             setPrevPage(data.previous);
             setTotalPages(data.total_pages);
@@ -59,7 +59,7 @@ function StatusTable({ refreshKey }) {
                                              <p>Cargando información...</p>
                                          </div>
                                      
-            ) :status_.length === 0 ? (
+            ) :threats.length === 0 ? (
                 <h3 className="text-center">No se puedieron cargar los datos</h3>
             ) : (
                 <>
@@ -67,21 +67,21 @@ function StatusTable({ refreshKey }) {
                         <thead className="bg-success">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Estatus</th>
+                                <th scope="col">Amenaza</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {status_.map((statu) => (
-                                <tr key={statu.id}>
-                                    <th scope="row">{statu.id}</th>
-                                    <td>{statu.status}</td>
+                            {threats.map((threat) => (
+                                <tr key={threat.id}>
+                                    <th scope="row">{threat.id}</th>
+                                    <td>{threat.name}</td>
                                     <td>
-                                        <EditButton onUpdate={handleRefresh} status={statu} />
+                                        <EditButton onUpdate={handleRefresh} threat={threat} />
                                     </td>
                                     <td>
-                                        <DeleteButton onDelete={handleRefresh} status={statu} />
+                                        <DeleteButton onDelete={handleRefresh} threat={threat} />
                                     </td>
                                 </tr>
                             ))}
@@ -99,4 +99,4 @@ function StatusTable({ refreshKey }) {
     );
 }
 
-export default StatusTable;
+export default FeedTable;
