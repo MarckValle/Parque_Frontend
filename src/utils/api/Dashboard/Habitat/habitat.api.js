@@ -25,6 +25,7 @@ export const createHabitat = ( habitat ) => {
     return axios.post('http://localhost:8000/admin_netzahualcoyotl/habitat/', habitat,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
+            "Content-Type": "multipart/form-data"
         },
     }
     );

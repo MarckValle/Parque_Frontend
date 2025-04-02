@@ -1,20 +1,20 @@
 import Swal from "sweetalert2";
-import { deleteThreat } from "../../../../../../utils/api/Dashboard/Threat/threat.api";
+import { deleteFeed } from "../../../../../../utils/api/Dashboard/Feed/feed.api";
 
 
-function DeleteButton( { onDelete, threat } ){
+function DeleteButton( { onDelete, feed } ){
 
-    const handleDelete = async (id, threatName) => {
+    const handleDelete = async (id, feedName) => {
         try {
             const accepted = await Swal.fire({
-                title: `¿Estás seguro que deseas eliminar "${threatName}"?`,
+                title: `¿Estás seguro que deseas eliminar "${feedName}"?`,
                 showDenyButton: true,
                 confirmButtonText: "Eliminar",
                 denyButtonText: "Cancelar",
             });
     
             if (accepted.isConfirmed) {
-                await deleteThreat(id); // Llamada a la API para eliminar
+                await deleteFeed(id); // Llamada a la API para eliminar
                 Swal.fire({
                     icon: "success",
                     title: "Eliminado",
@@ -34,7 +34,7 @@ function DeleteButton( { onDelete, threat } ){
     return(
         <>
         <button
-            onClick={() => handleDelete(threat.id, threat.name)} // Llama al manejo de eliminación
+            onClick={() => handleDelete(feed.id, feed.name)} // Llama al manejo de eliminación
             className="btn btn-outline-danger"
             >
             Eliminar

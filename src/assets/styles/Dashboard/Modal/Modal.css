@@ -1,0 +1,40 @@
+/* Estilos para mejorar la visualización de SweetAlert2 */
+.swal-wide {
+    z-index: 9999;
+  }
+  
+  .swal-large-content {
+    max-width: 800px;
+    width: 90%;
+  }
+  
+  .swal2-html-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  /* Estilos para la galería de fotos */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .photo-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  /* Estilos para la lista de sonidos y videos */
+  .sound-item, .video-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+  }
+  
+  .sound-item:last-child, .video-item:last-child {
+    border-bottom: none;
+  }

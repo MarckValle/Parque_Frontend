@@ -43,6 +43,7 @@ export const createFeed = ( feed ) => {
     return axios.post('http://localhost:8000/admin_netzahualcoyotl/create_feed/', feed,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
+            "Content-Type": "multipart/form-data"
         },
     }
     );
@@ -68,8 +69,8 @@ export const editThreat = async (data) => {
 };
 
 
-export const deleteThreat = ( id ) => {
-    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/create_threat/`, 
+export const deleteFeed = ( id ) => {
+    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/create_feed/`, 
     { headers: {
         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         }, 

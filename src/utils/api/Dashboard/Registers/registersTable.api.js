@@ -28,6 +28,7 @@ export const createRegister = ( register ) => {
     return axios.post('http://localhost:8000/admin_netzahualcoyotl/add_register/', register,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
+             "Content-Type": "multipart/form-data"
         },
     }
     );

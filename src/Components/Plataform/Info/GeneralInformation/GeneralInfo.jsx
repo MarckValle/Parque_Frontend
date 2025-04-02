@@ -1,11 +1,11 @@
 import React from "react";
 import Cards from "../Cards/Card";
-
+import "/src/assets/styles/Dashboard/Validate/validate.css";
 function GeneralInfo({ distribution, habitat, feed }){
     return(
         <div className="container">
             <h2 className="text-center">Informacion General</h2>
-            <div className="app-validate-container">
+            <div className="validate-container">
                 {feed.length > 0 ? (
                     feed.map((food, index) => (
                         <Cards key={index} theme="Alimentación" descripcion={food.name} img={food.photo} />

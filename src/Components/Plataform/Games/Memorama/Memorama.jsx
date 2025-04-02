@@ -77,7 +77,7 @@ const MemoryGame = () => {
 
     if (loading) {
         return (
-            <div className="container">
+            <div className="container text-center mt-5">
                 <ClipLoader color="#007bff" size={100} />
                 <p>Cargando información...</p>
             </div>

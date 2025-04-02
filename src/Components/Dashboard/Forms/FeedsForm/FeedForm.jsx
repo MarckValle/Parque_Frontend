@@ -9,7 +9,10 @@ function FeedForm({ onAdd }){
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
 
     const onSubmit = handleSubmit(async (data) => {
-        await createFeed(data);
+        const formData = new FormData();
+        formData.append("name", data.name);
+        formData.append("photo", data.photo[0]); // Añadir el archivo correctamente
+        await createFeed(formData);
         reset();
 
         const Toast = Swal.mixin({

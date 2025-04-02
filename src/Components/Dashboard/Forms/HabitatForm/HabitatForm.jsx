@@ -9,43 +9,72 @@ function HabitatForm({ onAdd }){
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
 
     const onSubmit = handleSubmit(async (data) => {
-        await createHabitat(data);
+        const formData = new FormData();
+        formData.append("name", data.name);
+        formData.append("photo", data.photo[0]); // Añadir el archivo correctamente
+    
+        // ✅ Enviar formData correctamente
+        await createHabitat(formData);
+    
+        // Resetear formulario después de enviar
         reset();
-
+    
+        // Mostrar notificación de éxito
         const Toast = Swal.mixin({
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.onmouseenter = Swal.stopTimer;
-                        toast.onmouseleave = Swal.resumeTimer;
-                    }
-                });
-                Toast.fire({
-                    icon: "success",
-                    title: "Se ha agregado correctamente"
-                });
-        
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            },
+        });
+    
+        Toast.fire({
+            icon: "success",
+            title: "Se ha agregado correctamente",
+        });
+    
+        // Actualizar la lista o realizar acción posterior
         onAdd();
     });
-
-    return(
+    
+    return (
         <div className="form-container">
             <h3 className="text-center">Registra una nueva Hábitat</h3>
-            <form onSubmit={onSubmit} className="small-form">
+            <form onSubmit={handleSubmit(onSubmit)} className="small-form">
                 <div className="form-group">
-                    <label htmlFor="name" className="form-label">Hábitat</label>
-                    <input className="form-control small-input" id="name" type="text" placeholder="Escribe el hábitat" autoComplete="off" {...register("name", { required: true })} />
+                    <label htmlFor="name" className="form-label">
+                        Hábitat
+                    </label>
+                    <input
+                        className="form-control small-input"
+                        id="name"
+                        type="text"
+                        placeholder="Escribe el hábitat"
+                        autoComplete="off"
+                        {...register("name", { required: true })}
+                    />
                     {errors.name && <span className="text-danger">Este campo es obligatorio</span>}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="photo" className="form-label">Selecciona una fotografía</label>
-                    <input className="form-control small-input" id="photo" type="file" placeholder="Fotografía" autoComplete="off" {...register("photo", { required: true })} />
+                    <label htmlFor="photo" className="form-label">
+                        Selecciona una fotografía
+                    </label>
+                    <input
+                        className="form-control small-input"
+                        id="photo"
+                        type="file"
+                        accept="image/*"
+                        {...register("photo", { required: true })}
+                    />
                     {errors.photo && <span className="text-danger">Este campo es obligatorio</span>}
                 </div>
-                <button type="submit" className="btn btn-dark btn-block mt-3">Guardar</button>
+                <button type="submit" className="btn btn-dark btn-block mt-3">
+                    Guardar
+                </button>
             </form>
         </div>
 

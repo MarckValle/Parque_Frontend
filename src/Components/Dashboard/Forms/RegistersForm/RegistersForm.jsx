@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import "/src/assets/styles/Dashboard/Forms/Forms.css"
 import { createRegister } from "../../../../utils/api/Dashboard/Registers/registersTable.api";
 import StatusSelect from "./Selects/SelectStatus";
 import SelectType from "./Selects/SelectType";
+import SelectFeed from "./Selects/SelectFeed";
+import SelectThreat from "./Selects/SelectThreat";
+import SelectHabitat from "./Selects/SelectHabitat";
 
 function RegistersForm(){
     
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
-
+    useEffect(() => {
+        register("type_id", { required: true });
+        register("status_id", { required: true });
+        register("alimentation_ids", { required: true });
+        register("threat_ids", { required: true });
+        register("habitat_ids", { required: true });
+    }, [register]);
+    
+    
     const onSubmit = handleSubmit(async (data) => {
-        await createRegister(data);
+        console.log("Data enviada:", data);
+        const formData = new FormData();
+        formData.append("name", data.name);
+        formData.append("scientific_name", data.scientific_name); 
+        formData.append("function", data.function); 
+        formData.append("description", data.description); 
+        formData.append("distribution", data.distribution); 
+        formData.append("sound", data.sound[0]); 
+        formData.append("photo", data.photo[0]); 
+        formData.append("video", data.video[0]); 
+        formData.append("type_id", data.type_id); 
+        formData.append("status_id", data.status_id); 
+        formData.append("alimentation_ids", data.alimentation_ids); 
+        formData.append("threat_ids", data.threat_ids); 
+        formData.append("habitat_ids", data.habitat_ids); 
+        await createRegister(formData);
         reset();
     });
 
@@ -76,6 +102,20 @@ function RegistersForm(){
                         <div className="form-group-horizontal">
                             <StatusSelect onChange={(value) => setValue("status_id", value)} />
                             {errors.status_id && <span className="text-danger">Este campo es obligatorio</span>}
+                        </div>
+                        {/* Select feed */}
+                        <div className="form-group-horizontal">
+                            <SelectFeed onChange={(value) => setValue("alimentation_ids", value)} />
+                            {errors.alimentation_ids && <span className="text-danger">Este campo es obligatorio</span>}
+                        </div>
+                        {/* Select threat */}
+                        <div className="form-group-horizontal">
+                            <SelectThreat onChange={(value) => setValue("threat_ids", value)} />
+                            {errors.threat_ids && <span className="text-danger">Este campo es obligatorio</span>}
+                        </div>
+                        <div className="form-group-horizontal">
+                            <SelectHabitat onChange={(value) => setValue("habitat_ids", value)} />
+                            {errors.habitat_ids && <span className="text-danger">Este campo es obligatorio</span>}
                         </div>
                     </div>
                 </div>

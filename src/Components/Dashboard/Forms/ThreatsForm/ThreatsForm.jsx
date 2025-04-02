@@ -40,11 +40,6 @@ function ThreatsForm({ onAdd }){
                     <input className="form-control small-input" id="name" type="text" placeholder="Escribe la amenaza" autoComplete="off" {...register("name", { required: true })} />
                     {errors.name && <span className="text-danger">Este campo es obligatorio</span>}
                 </div>
-                <div className="form-group">
-                    <label htmlFor="photo" className="form-label">Selecciona una fotografía</label>
-                    <input className="form-control small-input" id="photo" type="file" placeholder="Fotografía" autoComplete="off" {...register("photo", { required: true })} />
-                    {errors.photo && <span className="text-danger">Este campo es obligatorio</span>}
-                </div>
                 <button type="submit" className="btn btn-dark btn-block mt-3">Guardar</button>
             </form>
         </div>
