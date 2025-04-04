@@ -11,7 +11,7 @@ const PuzzleGame = () => {
   const [gameComplete, setGameComplete] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/general_netzahualcoyotl/guess_photo/")
+    fetch("https://netzapark-backend.onrender.com/general_netzahualcoyotl/guess_photo/")
       .then((response) => response.json())
       .then((data) => {
         const selectedPhoto = data.photos[0].photo;

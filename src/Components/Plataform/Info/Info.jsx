@@ -21,7 +21,7 @@ function InfoView() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch("http://127.0.0.1:8000/general_netzahualcoyotl/register_card/", {
+                const response = await fetch("https://netzapark-backend.onrender.com/general_netzahualcoyotl/register_card/", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

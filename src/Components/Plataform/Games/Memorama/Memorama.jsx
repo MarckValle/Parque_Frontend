@@ -16,7 +16,7 @@ const MemoryGame = () => {
     const fetchImages = async () => {
         setLoading(true);
         try {
-            const response = await fetch("http://127.0.0.1:8000/general_netzahualcoyotl/get_photos/");
+            const response = await fetch("https://netzapark-backend.onrender.com/general_netzahualcoyotl/get_photos/");
             const data = await response.json();
 
             if (!data.photos || !Array.isArray(data.photos)) {

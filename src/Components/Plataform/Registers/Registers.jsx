@@ -4,7 +4,7 @@ import '/src/assets/styles/Platform/index.css';
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import InfoView from "../Info/Info";
-const API_URL = "http://localhost:8000/admin_netzahualcoyotl/add_register/";
+const API_URL = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/";
 import { ClipLoader } from "react-spinners";
 
 const Registers = () => {

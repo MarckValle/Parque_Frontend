@@ -9,7 +9,7 @@ const GuessTheImageGame = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8000/general_netzahualcoyotl/guess_photo/') // Cambia a la URL de tu API
+        fetch('https://netzapark-backend.onrender.com/general_netzahualcoyotl/guess_photo/') // Cambia a la URL de tu API
             .then(response => response.json())
             .then(data => {
                 const shuffledPhotos = shuffleArray(data.photos);
