@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import '/src/assets/styles/Platform/index.css';
+import "/src/assets/styles/Platform/index.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import InfoView from "../Info/Info";
-const API_URL = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/";
 import { ClipLoader } from "react-spinners";
 
-const Registers = () => {
+const API_URL = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/";
 
+const Registers = () => {
   const [data, setData] = useState([]);
-  const navigate = useNavigate();
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -19,22 +20,36 @@ const Registers = () => {
       .then((response) => {
         if (response.data) {
           setData(response.data);
+          setFilteredData(response.data); // Inicialmente, los datos filtrados son todos los registros
           setLoading(false);
-
         }
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  // Agrupar registros por type_register
-  const groupedData = data.reduce((acc, item) => {
-    const category = item.type_id.type_register;
-    if (!acc[category]) {
-      acc[category] = [];
+  // Función para agrupar registros por categoría
+  const groupByCategory = (items) => {
+    return items.reduce((acc, item) => {
+      const category = item.type_id.type_register;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(item);
+      return acc;
+    }, {});
+  };
+
+  // Filtrar registros al escribir en el input
+  useEffect(() => {
+    if (searchTerm.trim() === "") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filtered);
     }
-    acc[category].push(item);
-    return acc;
-  }, {});
+  }, [searchTerm, data]);
 
   const openModal = (item) => {
     Swal.fire({
@@ -54,23 +69,36 @@ const Registers = () => {
         navigate("/videos/", { state: { video: item.video, name: item.name } });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         navigate(`/informacion/${item.id}`);
-        
       }
     });
   };
 
   if (loading) {
     return (
-        <div className="container text-center">
-            <ClipLoader color="#007bff" size={100} />
-            <p>Cargando información...</p>
-        </div>
+      <div className="container text-center mt-5">
+        <ClipLoader color="#007bff" size={100} />
+        <p>Cargando información...</p>
+      </div>
     );
-}
+  }
 
+  // Agrupar registros filtrados
+  const groupedData = groupByCategory(filteredData);
 
   return (
     <div className="container mt-4">
+      {/* 🔍 Input de búsqueda */}
+      <div className="text-center mb-3">
+        <h3>Buscar registro...</h3>
+        <input
+          type="text"
+          className="form-control text-center"
+          placeholder="Escribe para buscar..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+
       {Object.entries(groupedData).map(([category, items]) => (
         <div key={category} className="mb-4">
           <h3 className="text-center">{category}</h3>
