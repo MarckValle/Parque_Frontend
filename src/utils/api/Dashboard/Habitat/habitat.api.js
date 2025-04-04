@@ -10,7 +10,7 @@ const token = getAuthToken();
 export const getAllHabitats = async () => {
     const token = localStorage.getItem('access_token');
     try {
-        const response = await axios.get('http://localhost:8000/admin_netzahualcoyotl/habitat/', {
+        const response = await axios.get('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/habitat/', {
             headers: {
                 Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
             },
@@ -22,7 +22,7 @@ export const getAllHabitats = async () => {
 };
 
 export const createHabitat = ( habitat ) => {
-    return axios.post('http://localhost:8000/admin_netzahualcoyotl/habitat/', habitat,
+    return axios.post('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/habitat/', habitat,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
             "Content-Type": "multipart/form-data"
@@ -34,7 +34,7 @@ export const createHabitat = ( habitat ) => {
 export const editHabitat = async (data) => {
     try {
         const response = await axios.put(
-            "http://localhost:8000/admin_netzahualcoyotl/habitat/",
+            "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/habitat/",
             data, 
             {
                 headers: {
@@ -52,7 +52,7 @@ export const editHabitat = async (data) => {
 
 
 export const deleteHabitat = ( id ) => {
-    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/habitat/`, 
+    return axios.delete(`https://netzapark-backend.onrender.com/admin_netzahualcoyotl/habitat/`, 
     { headers: {
         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         }, 

@@ -25,7 +25,7 @@ export const getTable = async (url, pageSize) => {
 
 
 export const createRegister = ( register ) => {
-    return axios.post('http://localhost:8000/admin_netzahualcoyotl/add_register/', register,
+    return axios.post('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/', register,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
              "Content-Type": "multipart/form-data"
@@ -35,7 +35,7 @@ export const createRegister = ( register ) => {
 };
 
 export const deleteRegisters = ( id ) => {
-    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/add_register/` ,
+    return axios.delete(`https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/` ,
     { headers: {
         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         }, 
@@ -44,7 +44,7 @@ export const deleteRegisters = ( id ) => {
 };
 
 export const updateRegisters = ( register ) => {
-    return axios.put(`http://localhost:8000/admin_netzahualcoyotl/add_register/` , register,
+    return axios.put(`https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/` , register,
     { headers: {
         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         }, 

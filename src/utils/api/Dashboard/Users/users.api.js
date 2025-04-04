@@ -8,7 +8,7 @@ const getAuthToken = () => {
 const token = getAuthToken();
 
 export const createUsers = ( data ) => {
-    return axios.post('http://localhost:8000/admin_netzahualcoyotl/add_users/', data,
+    return axios.post('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_users/', data,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         },
@@ -17,7 +17,7 @@ export const createUsers = ( data ) => {
 };
 
 export const deleteUsers = ( id ) => {
-    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/add_users/` ,
+    return axios.delete(`https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_users/` ,
     { headers: {
         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         }, 
@@ -28,7 +28,7 @@ export const deleteUsers = ( id ) => {
 export const getTableUsers = async (page = 1, pageSize = 10) => {
     const token = localStorage.getItem('access_token');
     try {
-        const response = await axios.post('http://localhost:8000/admin_netzahualcoyotl/table_users/',{
+        const response = await axios.post('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/table_users/',{
             headers: {
                 Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
             },

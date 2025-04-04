@@ -12,7 +12,7 @@ const token = getAuthToken();
 export const getAllHabitats = async () => {
     const token = localStorage.getItem('access_token');
     try {
-        const response = await axios.get('http://localhost:8000/admin_netzahualcoyotl/habitat/', {
+        const response = await axios.get('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/habitat/', {
             headers: {
                 Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
             },
@@ -40,7 +40,7 @@ export const getTableThreat = async (url, pageSize) => {
 };
 
 export const createFeed = ( feed ) => {
-    return axios.post('http://localhost:8000/admin_netzahualcoyotl/create_feed/', feed,
+    return axios.post('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/create_feed/', feed,
         {headers: {
             Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
             "Content-Type": "multipart/form-data"
@@ -52,7 +52,7 @@ export const createFeed = ( feed ) => {
 export const editThreat = async (data) => {
     try {
         const response = await axios.put(
-            "http://localhost:8000/admin_netzahualcoyotl/create_threat/",
+            "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/create_threat/",
             data, 
             {
                 headers: {
@@ -70,7 +70,7 @@ export const editThreat = async (data) => {
 
 
 export const deleteFeed = ( id ) => {
-    return axios.delete(`http://localhost:8000/admin_netzahualcoyotl/create_feed/`, 
+    return axios.delete(`https://netzapark-backend.onrender.com/admin_netzahualcoyotl/create_feed/`, 
     { headers: {
         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
         }, 

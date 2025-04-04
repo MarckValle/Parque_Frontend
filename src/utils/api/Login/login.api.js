@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const login = async (data) => {
     try {
-        const response = await axios.post('http://localhost:8000/general/login/', data); // URL de tu backend para obtener el token
+        const response = await axios.post('https://netzapark-backend.onrender.com/general/login/', data); // URL de tu backend para obtener el token
         const { access, refresh } = response.data;
 
         // Almacenar los tokens en localStorage
