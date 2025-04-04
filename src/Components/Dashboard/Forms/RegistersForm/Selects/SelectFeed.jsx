@@ -14,7 +14,7 @@ const SelectFeed = ( {onChange} ) => {
 
         const fetchFeeds = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/admin_netzahualcoyotl/create_feed/', {
+                const response = await axios.get('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/create_feed/', {
                     headers: {
                         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
                     },

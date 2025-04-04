@@ -14,7 +14,7 @@ const SelectHabitat = ( {onChange} ) => {
 
         const fetchHabitats = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/admin_netzahualcoyotl/habitat/', {
+                const response = await axios.get('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/habitat/', {
                     headers: {
                         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
                     },

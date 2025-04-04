@@ -14,7 +14,7 @@ const SelectThreat = ( {onChange} ) => {
 
         const fetchThreats = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/admin_netzahualcoyotl/create_threat/', {
+                const response = await axios.get('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/create_threat/', {
                     headers: {
                         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
                     },
