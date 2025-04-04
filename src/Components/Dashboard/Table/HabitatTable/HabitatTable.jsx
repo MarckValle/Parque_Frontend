@@ -16,7 +16,7 @@ function HabitatTable({ refreshKey }){
         const [loading, setLoading] = useState(true);
 
         const pageSize = 5; 
-        const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_habitats/";
+        const baseUrl = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/table_habitats/";
     
         const fetchHabitats = async (url) => {
             try {

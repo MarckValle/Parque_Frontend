@@ -18,7 +18,7 @@ function RegistersTable({ refreshKey }){
         const [currentPage, setCurrentPage] = useState(1); // Página actual
         const [totalPages, setTotalPages] = useState(1); // Total de páginas
         const pageSize = 5; // Tamaño de la página
-        const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/get_registers/";
+        const baseUrl = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/get_registers/";
         const [loading, setLoading] = useState(true);
         const fetchRegisters = async (url) => {
             try {

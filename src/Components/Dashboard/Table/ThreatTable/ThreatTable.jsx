@@ -13,7 +13,7 @@ function FeedTable({ refreshKey }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const pageSize = 5;
-    const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_threat/";
+    const baseUrl = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/table_threat/";
     const [loading, setLoading] = useState(true);
 
     const fetchStatus = async (url) => {

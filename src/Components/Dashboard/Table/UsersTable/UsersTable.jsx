@@ -13,7 +13,7 @@ function UsersTable({ refreshKey }){
         const [currentPage, setCurrentPage] = useState(1); // Página actual
         const [totalPages, setTotalPages] = useState(1); // Total de páginas
         const pageSize = 5; // Tamaño de la página
-        const baseUrl = "http://localhost:8000/admin_netzahualcoyotl/table_users/";
+        const baseUrl = "https://netzapark-backend.onrender.com/admin_netzahualcoyotl/table_users/";
         const [loading, setLoading] = useState(true);
 
         const fetchRegisters = async (url) => {
