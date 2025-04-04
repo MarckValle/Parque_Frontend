@@ -21,18 +21,17 @@ function InfoView() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch("https://netzapark-backend.onrender.com/general_netzahualcoyotl/register_card/", {
-                    method: "POST",
+                const response = await fetch(`http://127.0.0.1:8000/general_netzahualcoyotl/register_card/${registerId}/`, {
+                    method: "GET",
                     headers: {
                         "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ register_id: registerId }),
+                    }
                 });
-
+        
                 if (!response.ok) {
                     throw new Error("Error al obtener los datos");
                 }
-
+        
                 const data = await response.json();
                 setRegisterData(data);
             } catch (err) {
