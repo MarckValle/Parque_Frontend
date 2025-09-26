@@ -16,8 +16,8 @@ function AnimalsPage(){
             <div className="main-content flex-grow-1">
                 <NavBar name='Animales' />
             <main>
-                <RegistersForm/>
-                <RegistersTable/>
+                <RegistersForm OnAdd={handleRefresh}/>
+                <RegistersTable refreshKey={refreshKey}/>
             </main>
             </div>
         </div>

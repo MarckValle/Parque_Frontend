@@ -19,25 +19,43 @@ const SelectType = ({ onChange }) => {
                         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
                     },
                 });
-                setTypes(response.data); // Asumimos que la API devuelve un array en `results`
-            } catch (error) {
-                console.error('Error al obtener los datos:', error);
-            }
-        };
+                let data = response.data;
+
+        // Asegúrate de que sea un array
+        if (Array.isArray(data)) {
+          setTypes(data);
+        } else if (data.results && Array.isArray(data.results)) {
+          setTypes(data.results);
+        } else if (data.id && data.status) {
+          // Caso en que viene un solo objeto
+          setTypes([data]);
+        } else {
+          console.warn('Formato inesperado en la respuesta de la API:', data);
+          setTypes([]);
+        }
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+        setTypes([]);
+      }
+    };
 
         fetchTypes();
     }, []);
 
     const handleChange = (event) => {
         const selectedValue = event.target.value;
-        console.log("Valor seleccionado:", selectedValue);
         onChange(selectedValue); // Pasar el ID seleccionado al formulario principal
       };
 
     return (
         <div>
-      <label htmlFor="type-select" className="form-label">Tipo</label>
-      <select id="type-select" className="form-select" onChange={handleChange}>
+      <label htmlFor="type-select" className="form-label">Tipo de Registro</label>
+      <select 
+        id="type-select" 
+        className="form-select" 
+        onChange={handleChange}
+        defaultValue=""
+       >
         <option value="" disabled>-- Selecciona un tipo --</option>
         {types.map((type) => (
           <option key={type.id} value={type.id}>{type.type_register}</option>

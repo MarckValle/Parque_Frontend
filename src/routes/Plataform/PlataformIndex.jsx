@@ -58,6 +58,11 @@ const PuzzlePage = loadable(() => import('../../pages/Plataform/Games/Puzzle/Puz
     <ClipLoader color="#36d7b7" size={50} />
   </div>
 });
+const GaleryPage = loadable(() => import('../../pages/Plataform/Galery/GaleryPage'), {
+  fallback: <div className="container mt-5 d-flex justify-content-center align-items-center">
+    <ClipLoader color="#36d7b7" size={50} />
+  </div>
+});
 
 function PlataformRoutes() {
     return (
@@ -73,6 +78,7 @@ function PlataformRoutes() {
             <Route path='/memorama/' element={<MemoramaPage />} />
             <Route path='/adivina_la_imagen/' element={<GuessImagePage />} />
             <Route path='/rompecabezas/' element={<PuzzlePage />} />
+            <Route path='/avistamientos/galeria' element={<GaleryPage />} />
             <Route path="*" element={<IndexPage/>} />
         </Routes>
     );

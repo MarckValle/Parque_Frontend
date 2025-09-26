@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const RegisterSelect = ({ onChange }) => {
-    const [types, setTypes] = useState([]); // Guardar opciones del API
-    const [selectedTypes, setSelectedTypes] = useState(''); // Valor seleccionado
+    const [names, setNames] = useState([]); // Guardar opciones del API
+    const [selectedNames, setSelectedNames] = useState(''); // Valor seleccionado
 
     useEffect(() => {
         // Petición a la API
@@ -13,20 +13,34 @@ const RegisterSelect = ({ onChange }) => {
         
         const token = getAuthToken();
 
-        const fetchTypes = async () => {
+        const fetchNames = async () => {
             try {
                 const response = await axios.get('https://netzapark-backend.onrender.com/admin_netzahualcoyotl/add_register/', {
                     headers: {
                         Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
                     },
                 });
-                setTypes(response.data); // Asumimos que la API devuelve un array en `results`
-            } catch (error) {
-                console.error('Error al obtener los datos:', error);
-            }
+                let data = response.data;
+
+        // Asegúrate de que sea un array
+        if (Array.isArray(data)) {
+          setNames(data);
+        } else if (data.results && Array.isArray(data.results)) {
+          setNames(data.results);
+        } else if (data.id && data.status) {
+          // Caso en que viene un solo objeto
+          setNames([data]);
+        } else {
+          console.warn('Formato inesperado en la respuesta de la API:', data);
+          setNames([]);
+        }
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+        setNames([]);
+      }
         };
 
-        fetchTypes();
+        fetchNames();
     }, []);
 
     const handleChange = (event) => {
@@ -36,11 +50,15 @@ const RegisterSelect = ({ onChange }) => {
 
     return (
         <div>
-      <label htmlFor="type-select" className="form-label">Nombre</label>
-      <select id="type-select" className="form-select" onChange={handleChange}>
+      <label htmlFor="name-select" className="form-label">Nombre</label>
+      <select 
+        id="name-select" 
+        className="form-select" 
+        onChange={handleChange}
+        defaultValue="">
         <option value="" disabled>-- Selecciona un Nombre --</option>
-        {types.map((type) => (
-          <option key={type.id} value={type.id}>{type.name}</option>
+        {names.map((name) => (
+          <option key={name.id} value={name.id}>{name.name}</option>
         ))}
       </select>
     </div>

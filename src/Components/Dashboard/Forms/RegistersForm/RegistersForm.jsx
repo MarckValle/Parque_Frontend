@@ -8,7 +8,7 @@ import SelectFeed from "./Selects/SelectFeed";
 import SelectThreat from "./Selects/SelectThreat";
 import SelectHabitat from "./Selects/SelectHabitat";
 
-function RegistersForm(){
+function RegistersForm( {OnAdd} ){
     
     const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm();
     useEffect(() => {
@@ -35,9 +35,25 @@ function RegistersForm(){
         formData.append("status_id", data.status_id); 
         formData.append("alimentation_ids", data.alimentation_ids); 
         formData.append("threat_ids", data.threat_ids); 
-        formData.append("habitat_ids", data.habitat_ids); 
+        formData.append("habitat_ids", data.habitat_ids);
         await createRegister(formData);
         reset();
+        const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Se ha agregado correctamente"
+                });
+                OnAdd();
     });
 
     return(
@@ -112,7 +128,7 @@ function RegistersForm(){
                         <div className="form-group-horizontal">
                             <SelectThreat onChange={(value) => setValue("threat_ids", value)} />
                             {errors.threat_ids && <span className="text-danger">Este campo es obligatorio</span>}
-                        </div>
+                        </div>ñ
                         <div className="form-group-horizontal">
                             <SelectHabitat onChange={(value) => setValue("habitat_ids", value)} />
                             {errors.habitat_ids && <span className="text-danger">Este campo es obligatorio</span>}
