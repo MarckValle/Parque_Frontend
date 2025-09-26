@@ -14,7 +14,7 @@ export const createSighthing = async (formData) => {
 export const getSighthing = async (formData) => {
   const token = localStorage.getItem("access_token");
 
-  return axios.get("http://127.0.0.1:8000/general_netzahualcoyotl/get_sights/?page_size=10", formData, {
+  return axios.get("https://netzapark-backend.onrender.com/get_sights/?page_size=10", formData, {
     headers: {
     }
   });
