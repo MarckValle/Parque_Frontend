@@ -18,13 +18,17 @@ const MemoryGame = () => {
         try {
             const response = await fetch("https://netzapark-backend.onrender.com/general_netzahualcoyotl/get_photos/");
             const data = await response.json();
+            console.log(data);
 
-            if (!data.photos || !Array.isArray(data.photos)) {
+            // Ajustamos el acceso porque viene con "photos: " en lugar de "photos"
+            const photos = data["photos: "] || data.photos;
+
+            if (!photos || !Array.isArray(photos)) {
                 throw new Error("La respuesta no contiene un array de fotos");
             }
 
             // Duplicar imágenes para formar pares y mezclarlas
-            const shuffledCards = [...data.photos, ...data.photos]
+            const shuffledCards = [...photos, ...photos]
                 .map((src, index) => ({ id: index, src, flipped: false, matched: false }))
                 .sort(() => Math.random() - 0.5);
 
@@ -32,6 +36,7 @@ const MemoryGame = () => {
             setMatchedCards([]);
             setAttempts(0);
             setGameCompleted(false);
+
         } catch (error) {
             console.error("Error al obtener imágenes:", error);
         } finally {
