@@ -1,0 +1,30 @@
+.us-container {
+  background: #f9f9f97a;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.us-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.us-divider {
+  width: 80px;
+  height: 4px;
+  background: #007bff;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.us-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 20px;
+}
