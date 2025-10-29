@@ -18,7 +18,7 @@ const [user, setUser] = useState({ first_name: "", last_name: "" });
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div className="container-fluid">
         <a className="navbar-brand" href="/dashboard/">
-          {user.first_name} {user.last_name}
+          {name}
         </a>
         <button
           className="navbar-toggler"
