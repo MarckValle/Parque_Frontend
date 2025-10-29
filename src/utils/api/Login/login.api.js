@@ -16,3 +16,21 @@ export const login = async (data) => {
         throw error;
     }
 };
+
+
+export const Me = async (token) => {
+  try {
+    const response = await axios.get(
+      "https://netzapark-backend.onrender.com/general/api/me/",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener usuario:", error);
+    throw error;
+  }
+};
