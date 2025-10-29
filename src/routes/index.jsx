@@ -41,12 +41,17 @@ const ThreatsPage = loadable(() => import("../pages/Administrator/Threats/Threat
   fallback: <LoadingSpinner />
 });
 
+const PassSent = loadable(() => import("../pages/Administrator/PasswordSent/PasswordSent"), {
+  fallback: <LoadingSpinner />
+});
+
 function AppRoutes() {
   return (
       <Routes>
         {/* Rutas de administrador */}
         <Route path="/login_administrador/" element={<Login />} />
         <Route path="/reestablecer_pass/" element={<ForgotPass />} />
+        <Route path="/correo_enviado_pass/" element={<PassSent />} />
         <Route path="/dashboard/" element={<DashboardPage />} />
         <Route path="/validar_avistamientos/" element={<ValidatePage />} />
         <Route path="/animales/" element={<AnimalsPage />} />
