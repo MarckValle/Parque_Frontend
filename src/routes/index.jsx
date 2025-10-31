@@ -45,6 +45,11 @@ const PassSent = loadable(() => import("../pages/Administrator/PasswordSent/Pass
   fallback: <LoadingSpinner />
 });
 
+const ResetPassPage = loadable(() => import("../pages/ResetPassword/ResetPassword"), {
+  fallback: <LoadingSpinner />
+});
+
+
 function AppRoutes() {
   return (
       <Routes>
@@ -52,6 +57,7 @@ function AppRoutes() {
         <Route path="/login_administrador/" element={<Login />} />
         <Route path="/reestablecer_pass/" element={<ForgotPass />} />
         <Route path="/correo_enviado_pass/" element={<PassSent />} />
+        <Route path="/reset-password/:uid/:token" element={<ResetPassPage />} />
         <Route path="/dashboard/" element={<DashboardPage />} />
         <Route path="/validar_avistamientos/" element={<ValidatePage />} />
         <Route path="/animales/" element={<AnimalsPage />} />

@@ -46,8 +46,8 @@ function EditButton({ onUpdate, register }) {
                     function: document.getElementById("swal-input-function").value,
                     description: document.getElementById("swal-input-description").value,
                     distribution: document.getElementById("swal-input-distribution").value,
-                    type_id: typeValue,
-                    status_id: statusValue,
+                    type_id: typeValue.id,
+                    status_id: statusValue.id,
                 };
             }
         });

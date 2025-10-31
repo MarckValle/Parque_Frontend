@@ -49,6 +49,16 @@ export const createFeed = ( feed ) => {
     );
 };
 
+export const editFeed = ( feed ) => {
+    return axios.put('http://127.0.0.1:8000/admin_netzahualcoyotl/create_feed/', feed,
+        {headers: {
+            Authorization: `Bearer ${token}`, // Agregar el token en los encabezados
+            "Content-Type": "multipart/form-data"
+        },
+    }
+    );
+};
+
 export const editThreat = async (data) => {
     try {
         const response = await axios.put(

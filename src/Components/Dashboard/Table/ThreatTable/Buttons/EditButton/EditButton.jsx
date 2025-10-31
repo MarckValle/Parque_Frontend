@@ -8,7 +8,6 @@ function EditButton({ onUpdate, threat }){
             html: `
                 <input id="swal-input-id" class="swal2-input" value="${threat.id}" placeholder="ID" disabled>
                 <input id="swal-input-name" class="swal2-input" value="${threat.name}" placeholder="Nombre del hábitat">
-                <input id="swal-input-photo" class="swal2-input" value="${threat.photo}" placeholder="URL de la imagen">
             `,
             showCancelButton: true,
             confirmButtonText: "Actualizar",
@@ -16,8 +15,7 @@ function EditButton({ onUpdate, threat }){
             preConfirm: () => {
                 return {
                     id: document.getElementById("swal-input-id").value,
-                    name: document.getElementById("swal-input-name").value,
-                    photo: document.getElementById("swal-input-photo").value
+                    name: document.getElementById("swal-input-name").value
                 };
             }
         });

@@ -128,7 +128,7 @@ function RegistersForm( {OnAdd} ){
                         <div className="form-group-horizontal">
                             <SelectThreat onChange={(value) => setValue("threat_ids", value)} />
                             {errors.threat_ids && <span className="text-danger">Este campo es obligatorio</span>}
-                        </div>ñ
+                        </div>
                         <div className="form-group-horizontal">
                             <SelectHabitat onChange={(value) => setValue("habitat_ids", value)} />
                             {errors.habitat_ids && <span className="text-danger">Este campo es obligatorio</span>}
