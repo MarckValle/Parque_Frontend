@@ -51,8 +51,7 @@ function Summary(){
               
             </div>
             <div className="charts">
-                <Chart title="Visitas semanales" type="bar" />
-                <Chart title="Visitas mensuales" type="bar" />
+                <Chart title="Visitas semanales" type="bar" />  
                 <Table title="Top animales" />
             </div>
         </div>
