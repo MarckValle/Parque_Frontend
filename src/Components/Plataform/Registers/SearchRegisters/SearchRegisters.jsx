@@ -18,7 +18,7 @@ function SearchRegisters() {
 
     const fetchSearchResults = async (term) => {
         try {
-            const response = await fetch("http://localhost:8000/general_netzahualcoyotl/search_register/", {
+            const response = await fetch("https://netzapark-backend.onrender.com/general_netzahualcoyotl/search_register/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
